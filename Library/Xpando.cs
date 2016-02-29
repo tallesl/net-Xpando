@@ -1,11 +1,14 @@
-﻿namespace ToExpando
+﻿namespace XpandoLibrary
 {
     using PropertiesHash;
     using System;
     using System.Collections.Generic;
     using System.Dynamic;
 
-    public static class ToExpandoExtension
+    /// <summary>
+    /// Provides a ToExpando extension method.
+    /// </summary>
+    public static class Xpando
     {
         /// <summary>
         /// Makes a ExpandoObject out of the given object.
@@ -14,15 +17,19 @@
         /// <returns>The ExpandoObject made</returns>
         public static ExpandoObject ToExpando(this object obj)
         {
-            if (obj == null) throw new ArgumentNullException("obj");
-            else if (obj is ExpandoObject) return (ExpandoObject)obj;
-            else
-            {
-                var expando = new ExpandoObject();
-                var dict = (IDictionary<string, object>)expando;
-                foreach (var kvp in PropertiesHasher.Make(obj)) dict.Add(kvp);
-                return expando;
-            }
+            if (obj == null)
+                throw new ArgumentNullException("obj");
+
+            if (obj is ExpandoObject)
+                return (ExpandoObject)obj;
+
+            var expando = new ExpandoObject();
+            var dict = (IDictionary<string, object>)expando;
+
+            foreach (var kvp in PropertiesHasher.Make(obj))
+                dict.Add(kvp);
+
+            return expando;
         }
 
         /// <summary>

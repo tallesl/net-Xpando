@@ -1,4 +1,4 @@
-﻿namespace ToExpando.Tests
+﻿namespace XpandoLibrary.Tests
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;

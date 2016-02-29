@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ToExpando")]
-[assembly: AssemblyDescription("Creates a ExpandoObject out of a given object.")]
+[assembly: AssemblyTitle("Xpando")]
+[assembly: AssemblyDescription("Creates an ExpandoObject out of a given object.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("")]
