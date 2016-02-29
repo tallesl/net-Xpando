@@ -1,6 +1,6 @@
 ﻿namespace XpandoLibrary
 {
-    using PropertiesHash;
+    using DictionaryLibrary;
     using System;
     using System.Collections.Generic;
     using System.Dynamic;
@@ -26,7 +26,7 @@
             var expando = new ExpandoObject();
             var dict = (IDictionary<string, object>)expando;
 
-            foreach (var kvp in PropertiesHasher.Make(obj))
+            foreach (var kvp in DictionaryMaker.Make(obj))
                 dict.Add(kvp);
 
             return expando;
