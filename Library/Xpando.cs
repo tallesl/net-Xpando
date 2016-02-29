@@ -39,6 +39,12 @@
         /// <param name="propertyName">Property name to be removed</param>
         public static void RemoveProperty(this ExpandoObject expando, string propertyName)
         {
+            if (expando == null)
+                throw new ArgumentNullException("expando");
+
+            if (propertyName == null)
+                throw new ArgumentNullException("propertyName");
+
             ((IDictionary<string, object>)expando).Remove(propertyName);
         }
     }

@@ -10,9 +10,23 @@
     {
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Null()
+        public void NullObject()
         {
             ((object)null).ToExpando();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void NullExpando()
+        {
+            Xpando.RemoveProperty(null, "foo");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void NullPropertyName()
+        {
+            new ExpandoObject().RemoveProperty(null);
         }
 
         [TestMethod]
