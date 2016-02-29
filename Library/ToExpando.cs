@@ -4,7 +4,6 @@
     using System;
     using System.Collections.Generic;
     using System.Dynamic;
-    using System.Linq;
 
     public static class ToExpandoExtension
     {
@@ -24,6 +23,16 @@
                 foreach (var kvp in PropertiesHasher.Make(obj)) dict.Add(kvp);
                 return expando;
             }
+        }
+
+        /// <summary>
+        /// Removes the property of the given ExpandoObject.
+        /// </summary>
+        /// <param name="expando">Object to remove property from</param>
+        /// <param name="propertyName">Property name to be removed</param>
+        public static void RemoveProperty(this ExpandoObject expando, string propertyName)
+        {
+            ((IDictionary<string, object>)expando).Remove(propertyName);
         }
     }
 }

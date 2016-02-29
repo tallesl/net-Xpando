@@ -38,5 +38,17 @@
             Assert.AreEqual("Bar", dict["Foo"]);
             Assert.AreEqual("Y", dict["X"]);
         }
+
+        [TestMethod]
+        public void Remove()
+        {
+            ExpandoObject expando = new { Foo = "Bar", X = "Y", }.ToExpando();
+            expando.RemoveProperty("Foo");
+
+            var dict = (IDictionary<string, object>)expando;
+
+            Assert.AreEqual(1, dict.Count);
+            Assert.AreEqual("Y", dict["X"]);
+        }
     }
 }
