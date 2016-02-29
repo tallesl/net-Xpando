@@ -3,6 +3,7 @@
     using DictionaryLibrary;
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Dynamic;
 
     /// <summary>
@@ -13,21 +14,23 @@
         /// <summary>
         /// Makes a ExpandoObject out of the given object.
         /// </summary>
-        /// <param name="obj">Object to become ExpandoObject</param>
+        /// <param name="value">Object to become ExpandoObject</param>
         /// <returns>The ExpandoObject made</returns>
-        public static ExpandoObject ToExpando(this object obj)
+        public static ExpandoObject ToExpando(this object value)
         {
-            if (obj == null)
-                throw new ArgumentNullException("obj");
+            if (value == null)
+                throw new ArgumentNullException("value");
 
-            if (obj is ExpandoObject)
-                return (ExpandoObject)obj;
+            var expando = value as ExpandoObject;
 
-            var expando = new ExpandoObject();
-            var dict = (IDictionary<string, object>)expando;
+            if (expando == null)
+            {
+                expando = new ExpandoObject();
+                var dict = (IDictionary<string, object>)expando;
 
-            foreach (var kvp in DictionaryMaker.Make(obj))
-                dict.Add(kvp);
+                foreach (var kvp in DictionaryMaker.Make(value))
+                    dict.Add(kvp);
+            }
 
             return expando;
         }
