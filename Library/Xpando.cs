@@ -3,7 +3,6 @@
     using DictionaryLibrary;
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
     using System.Dynamic;
 
     /// <summary>
@@ -49,6 +48,23 @@
                 throw new ArgumentNullException("propertyName");
 
             ((IDictionary<string, object>)expando).Remove(propertyName);
+        }
+
+        /// <summary>
+        /// Checks if the property exists in the given ExpandoObject.
+        /// </summary>
+        /// <param name="expando">Object to check if the property exists</param>
+        /// <param name="propertyName">Property name to check</param>
+        /// <returns>True if the property exists in the given ExpandoObject, false otherwise</returns>
+        public static bool HasProperty(this ExpandoObject expando, string propertyName)
+        {
+            if (expando == null)
+                throw new ArgumentNullException("expando");
+
+            if (propertyName == null)
+                throw new ArgumentNullException("propertyName");
+
+            return ((IDictionary<string, object>)expando).ContainsKey(propertyName);
         }
     }
 }
