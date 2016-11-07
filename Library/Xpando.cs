@@ -66,5 +66,41 @@
 
             return ((IDictionary<string, object>)expando).ContainsKey(propertyName);
         }
+
+        /// <summary>
+        /// Makes a shallow copy of the given object.
+        /// </summary>
+        /// <param name="expando">Object to be copied</param>
+        /// <returns>A shallow copy of the given object</returns>
+        public static ExpandoObject ShallowCopy(this ExpandoObject expando)
+        {
+            return Copy(expando, false);
+        }
+
+        /// <summary>
+        /// Makes a deep copy of the given object
+        /// </summary>
+        /// <param name="expando">Object to be copied</param>
+        /// <returns>A deep copy of the given object</returns>
+        public static ExpandoObject DeepCopy(this ExpandoObject expando)
+        {
+            return Copy(expando, true);
+        }
+
+        private static ExpandoObject Copy(ExpandoObject original, bool deep)
+        {
+            var clone = new ExpandoObject();
+
+            var _original = (IDictionary<string, object>)original;
+            var _clone = (IDictionary<string, object>)clone;
+
+            foreach (var kvp in _original)
+                _clone.Add(
+                    kvp.Key,
+                    deep && kvp.Value is ExpandoObject ? DeepCopy((ExpandoObject)kvp.Value) : kvp.Value
+                );
+
+            return clone;
+        }
     }
 }
