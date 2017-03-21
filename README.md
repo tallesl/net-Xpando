@@ -28,7 +28,22 @@ dynamic coolUser = boringUser.ToExpando(); // does the magic
 coolUser.NickName = "Johny";
 ```
 
-## Checking if has a property
+## Checking if has any property
+
+```cs
+using XpandoLibrary;
+
+var expando = new ExpandoObject();
+dynamic dynamic = expando;
+
+expando.Empty(); // True
+
+dynamic.Foo = "Bar";
+
+expando.Empty(); // False
+```
+
+## Checking if has a specific property
 
 ```cs
 using XpandoLibrary;

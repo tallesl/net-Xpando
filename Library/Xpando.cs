@@ -4,6 +4,7 @@
     using System;
     using System.Collections.Generic;
     using System.Dynamic;
+    using System.Linq;
 
     /// <summary>
     /// Provides a ToExpando extension method.
@@ -48,6 +49,16 @@
                 throw new ArgumentNullException("propertyName");
 
             ((IDictionary<string, object>)expando).Remove(propertyName);
+        }
+
+        /// <summary>
+        /// Returns true if the given ExpandoObject has no properties, false otherwise.
+        /// </summary>
+        /// <param name="expando">Obuject to check if has any properties</param>
+        /// <returns>True if the given ExpandoObject has no properties, false otherwise</returns>
+        public static bool Empty(this ExpandoObject expando)
+        {
+            return !((IDictionary<string, object>)expando).Any();
         }
 
         /// <summary>

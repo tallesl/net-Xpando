@@ -8,6 +8,19 @@
     public class PropertyTests
     {
         [TestMethod]
+        public void Empty()
+        {
+            ExpandoObject expando = new { }.ToExpando();
+
+            Assert.IsTrue(expando.Empty());
+
+            ((dynamic)expando).Foo = "Bar";
+
+            Assert.IsFalse(expando.Empty());
+            dynamic dynamic = new object();
+        }
+
+        [TestMethod]
         public void RemoveProperty()
         {
             ExpandoObject expando = new { Foo = "Bar", X = "Y", }.ToExpando();
