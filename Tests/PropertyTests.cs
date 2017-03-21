@@ -17,7 +17,6 @@
             ((dynamic)expando).Foo = "Bar";
 
             Assert.IsFalse(expando.Empty());
-            dynamic dynamic = new object();
         }
 
         [TestMethod]
