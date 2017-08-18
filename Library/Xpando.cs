@@ -54,7 +54,7 @@
         /// <summary>
         /// Returns true if the given ExpandoObject has no properties, false otherwise.
         /// </summary>
-        /// <param name="expando">Obuject to check if has any properties</param>
+        /// <param name="expando">Object to check if has any properties</param>
         /// <returns>True if the given ExpandoObject has no properties, false otherwise</returns>
         public static bool Empty(this ExpandoObject expando)
         {
