@@ -34,8 +34,8 @@
     <DocumentationFile>bin\Release\Xpando.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dictionary, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dictionary.2.0.0\lib\Dictionary.dll</HintPath>
+    <Reference Include="Dictionary, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dictionary.2.1.1\lib\Dictionary.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

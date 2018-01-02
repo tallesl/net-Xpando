@@ -33,10 +33,10 @@
         public void Empty()
         {
             var expando = new { }.ToExpando();
-            var dict = (IDictionary<string, object>)expando;
+            var count = ((IDictionary<string, object>)expando).Count;
 
             Assert.IsTrue(expando is ExpandoObject);
-            Assert.AreEqual(0, dict.Count);
+            Assert.AreEqual(0, count);
         }
 
         [TestMethod]
@@ -45,12 +45,26 @@
             dynamic expando = new { Foo = "Bar" }.ToExpando();
             expando.X = "Y";
 
-            var dict = (IDictionary<string, object>)expando;
+            var count = ((IDictionary<string, object>)expando).Count;
 
             Assert.IsTrue(expando is ExpandoObject);
-            Assert.AreEqual(2, dict.Count);
-            Assert.AreEqual("Bar", dict["Foo"]);
-            Assert.AreEqual("Y", dict["X"]);
+            Assert.AreEqual(2, count);
+            Assert.AreEqual("Bar", expando.Foo);
+            Assert.AreEqual("Y", expando.X);
+        }
+
+        [TestMethod]
+        public void Dictionary()
+        {
+            dynamic expando = new Dictionary<string, object> { { "Foo", "Bar" } }.ToExpando();
+            expando.X = "Y";
+
+            var count = ((IDictionary<string, object>)expando).Count;
+
+            Assert.IsTrue(expando is ExpandoObject);
+            Assert.AreEqual(2, count);
+            Assert.AreEqual("Bar", expando.Foo);
+            Assert.AreEqual("Y", expando.X);
         }
     }
 }
